@@ -21,6 +21,7 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
+import { AuthGuardService } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -44,19 +45,23 @@ import { AuthService } from './auth.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     RouterModule.forRoot([
+      // Rutas comunes
       { path: '', component: HomeComponent },
       { path: 'products', component: ProductsComponent },
-      { path: 'my/orders', component: MyOrdersComponent },
       { path: 'shopping-cart', component: ShoppingCartComponent },
-      { path: 'check-out', component: CheckOutComponent },
-      { path: 'order-sucess', component: OrderSucessComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'admin/products', component: AdminProductsComponent },
-      { path: 'admin/orders', component: AdminOrdersComponent },
+      // Rutas protegidas
+      { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuardService] },
+      { path: 'order-sucess', component: OrderSucessComponent, canActivate: [AuthGuardService] },
+      { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuardService] },
+      // Rutas de administrador
+      { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService] },
+      { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService] },
     ]),
   ],
   providers: [
     AuthService,
+    AuthGuardService,
   ],
   bootstrap: [AppComponent]
 })
