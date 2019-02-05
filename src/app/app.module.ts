@@ -23,7 +23,10 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { AuthGuardService } from './auth-guard.service';
 import { UserService } from './user.service';
+<<<<<<< HEAD
 import { AdminAuthGuardService } from './admin-auth-guard.service';
+=======
+>>>>>>> 2adf649155a70ed4a88105fa8201bb3ae8830e62
 
 @NgModule({
   declarations: [
@@ -72,7 +75,10 @@ import { AdminAuthGuardService } from './admin-auth-guard.service';
   providers: [
     AuthService,
     AuthGuardService,
+<<<<<<< HEAD
     AdminAuthGuardService,
+=======
+>>>>>>> 2adf649155a70ed4a88105fa8201bb3ae8830e62
     UserService,
   ],
   bootstrap: [AppComponent]
