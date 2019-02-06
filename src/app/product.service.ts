@@ -8,7 +8,11 @@ export class ProductService {
 
   constructor(private db: AngularFireDatabase) { }
 
-  create(product) {
+  create(product: any) {
     return this.db.list('/products').push(product);
+  }
+
+  getAll() {
+    return this.db.list('/products').valueChanges();
   }
 }
