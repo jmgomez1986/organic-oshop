@@ -1,6 +1,6 @@
+import { AppUser } from './../models/app-user';
+import { AuthService } from './../auth.service';
 import { Component } from '@angular/core';
-import { AuthService } from '../auth.service';
-import { AppUser } from '../models/app-user';
 
 @Component({
   selector: 'app-bs-navbar',
@@ -17,4 +17,5 @@ export class BsNavbarComponent {
   logout() {
     this.auth.logout();
   }
+
 }
