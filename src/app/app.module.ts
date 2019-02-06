@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -26,6 +27,7 @@ import { UserService } from './user.service';
 import { AdminAuthGuard } from './admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { CategoryService } from './category.service';
+import { ProductService } from './product.service';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { CategoryService } from './category.service';
     BrowserModule,
     AppRoutingModule,
     NgbModule.forRoot(),
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
@@ -82,6 +85,7 @@ import { CategoryService } from './category.service';
     AuthGuard,
     AdminAuthGuard,
     UserService,
+    ProductService,
     CategoryService,
   ],
   bootstrap: [AppComponent]
