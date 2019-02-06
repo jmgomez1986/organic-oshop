@@ -13,7 +13,6 @@ export class ProductService {
   }
 
   getAll() {
-    // return this.db.list('/products').valueChanges();
     return this.db.list('/products')
     .snapshotChanges().map(changes => {
       return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
