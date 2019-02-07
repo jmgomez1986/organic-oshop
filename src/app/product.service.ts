@@ -19,11 +19,15 @@ export class ProductService {
     });
   }
 
-  getProduct(productId: string) {
+  get(productId: string) {
     return this.db.object('/products/' + productId).valueChanges();
   }
 
-  updateProduct(productId: string, product: any) {
+  update(productId: string, product: any) {
     return this.db.object('/products/' + productId).update(product);
+  }
+
+  delete(productId: string) {
+    return this.db.object('/products/' + productId).remove();
   }
 }
