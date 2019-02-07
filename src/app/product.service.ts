@@ -18,4 +18,8 @@ export class ProductService {
       return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
     });
   }
+
+  getProduct(productId: string) {
+    return this.db.object('/products/' + productId).valueChanges() ;
+  }
 }
