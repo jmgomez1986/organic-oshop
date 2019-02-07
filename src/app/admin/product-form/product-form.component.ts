@@ -13,6 +13,7 @@ import 'rxjs/add/operator/take';
 export class ProductFormComponent implements OnInit {
   categories$: Observable<any>;
   product = {};
+  id: string;
 
   constructor(
     private router: Router,
@@ -21,17 +22,18 @@ export class ProductFormComponent implements OnInit {
     private productService: ProductService) {
     this.categories$ = this.categoryService.getCategories();
 
-    let id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.productService.getProduct(id).take(1).subscribe(p => this.product = p); // take(1) termina la subcripcion de un elemento
-      console.log(this.product);
+    this.id = this.route.snapshot.paramMap.get('id');
+    if (this.id) {
+      this.productService.getProduct(this.id).take(1).subscribe(p => this.product = p); // take(1) termina la subcripcion de un elemento
     }
   }
 
   save(product: any) {
-    this.productService.create(product);
+    if (this.id) {
+      this.productService.updateProduct(this.id, product);
+    } else { this.productService.create(product); }
+
     this.router.navigate(['/admin/products']);
-    console.log(product);
   }
 
   ngOnInit() {
