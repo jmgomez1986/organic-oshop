@@ -23,7 +23,7 @@
       </div>
       <div class="form-group">
         <label for="category">Category</label>
-        <select #category="ngModel" [(ngModel)]="product.categories" name="categories" id="category" class="form-control" required>
+        <select #category="ngModel" [(ngModel)]="product.category" name="categories" id="category" class="form-control" required>
           <option value=""></option>
 
           <option *ngFor="let category of categories$ | async" [value]="category.key">

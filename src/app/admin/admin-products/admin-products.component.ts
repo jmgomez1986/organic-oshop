@@ -49,7 +49,8 @@ import { DataTableResource } from 'angular5-data-table';
       filter(query: string) {
         this.filteredProducts = (query) ?
         this.products.filter(p => p['title'].toLowerCase().includes(query.toLowerCase())) :
-        this.products;
+          this.products;
+        this.initializeTable(this.filteredProducts);
       }
 
     }
