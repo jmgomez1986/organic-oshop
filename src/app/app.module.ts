@@ -58,7 +58,7 @@ import { ProductService } from './product.service';
     AngularFireAuthModule,
     RouterModule.forRoot([
       // Rutas comunes
-      { path: '', component: HomeComponent },
+      { path: '', component: ProductsComponent },
       { path: 'products', component: ProductsComponent },
       { path: 'shopping-cart', component: ShoppingCartComponent },
       { path: 'login', component: LoginComponent },
