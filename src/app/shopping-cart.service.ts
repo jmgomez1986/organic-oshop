@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Product } from './models/product';
 import 'rxjs/add/operator/take';
-import { take } from 'rxjs-compat/operator/take';
 
 @Injectable({
   providedIn: 'root'
