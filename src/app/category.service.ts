@@ -14,7 +14,6 @@ export class CategoryService {
       .snapshotChanges().map(changes => {
         return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
       });
-      console.log(this.categories$);
       return this.categories$;
     }
 }
