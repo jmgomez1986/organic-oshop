@@ -1,13 +1,5 @@
 import { ShoppingCartItem } from './../models/shopping-cart-item';
 
-export class ShoppingCart {
-  items: ShoppingCartItem[];
-
-  get totalItemsCount() {
-    let count = 0;
-    for (let productId in this.items ) {
-      count += this.items[productId].quantity;
-    }
-    return count;
-  }  
+export interface ShoppingCart {
+  items: ShoppingCartItem[]
 }
