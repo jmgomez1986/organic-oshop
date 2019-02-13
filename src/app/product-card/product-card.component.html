@@ -5,30 +5,17 @@
     <p class="card-text">{{ product.price | currency:'USD': 'symbol-narrow' }}</p>
   </div>
   <div
-  *ngIf="showActions"
+    *ngIf="showActions && shoppingCart"
     class="card-footer">
     <button
-      *ngIf="getQuantity() === 0; else updateQuantity"
+      *ngIf="shoppingCart.getQuantity(product) === 0; else updateQuantity"
       (click)="addToCart()"
       class="btn btn-secondary btn-block">
       Add to cart
     </button>
     <ng-template #updateQuantity>
-      <div class="row no-gutters">
-        <div class="col-2">
-          <button
-            (click)="removeFomCart()"
-            class="btn btn-secondary btn-block">-</button>
-        </div>
-        <div class="col text-center">
-          {{ getQuantity() }} in cart
-        </div>
-        <div class="col-2">
-          <button
-            (click)="addToCart()"
-            class="btn btn-secondary btn-block">+</button>
-        </div>
-      </div>
+      <app-product-quantity [product]="product" [shopping-cart]="shoppingCart">
+      </app-product-quantity>
     </ng-template>
   </div>
 </div>
