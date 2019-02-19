@@ -32,6 +32,7 @@ export class ShoppingCart {
   }
 
   getQuantity(product: Product) {
+    console.log('Product: ', product);
     const item = this.itemsMap[product.key];
     return item ? item.quantity : 0;
   }
