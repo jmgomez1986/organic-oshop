@@ -32,7 +32,7 @@ export class ShoppingCart {
   }
 
   getQuantity(product: Product) {
-    const item = this.itemsMap[product.key];
+    const item = this.items[product.key];
     return item ? item.quantity : 0;
   }
 
