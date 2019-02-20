@@ -2,18 +2,17 @@
     "extends": "../tslint.json",
     "rules": {
       "no-input-rename": false,
-       "forin": true,
-      "directive-selector": [
-          true,
-          "attribute",
-          "app",
-          "camelCase"
-      ],
-      "component-selector": [
-          true,
-          "element",
-          "app",
-          "kebab-case"
-      ]
-  }
+        "directive-selector": [
+            true,
+            "attribute",
+            "app",
+            "camelCase"
+        ],
+        "component-selector": [
+            true,
+            "element",
+            "app",
+            "kebab-case"
+        ]
+    }
 }

@@ -1,4 +1,3 @@
-
 import { Product } from './../models/product';
 
 export class ShoppingCartItem {

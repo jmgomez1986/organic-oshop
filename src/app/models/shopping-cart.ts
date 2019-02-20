@@ -1,5 +1,4 @@
 import { ShoppingCartItem } from './../models/shopping-cart-item';
-import { Product } from './product';
 
 export class ShoppingCart {
   items: ShoppingCartItem[] = [];
@@ -30,11 +29,4 @@ export class ShoppingCart {
     }
     return sum;
   }
-
-  getQuantity(product: Product) {
-    // console.log('Product: ', product);
-    const item = this.items[product.key];
-    return item ? item.quantity : 0;
-  }
-
 }
