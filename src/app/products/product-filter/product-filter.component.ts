@@ -1,18 +1,20 @@
-import { Component, Input } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { CategoryService } from 'src/app/category.service';
+import { CategoryService } from './../../category.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-product-filter',
+  selector: 'product-filter',
   templateUrl: './product-filter.component.html',
   styleUrls: ['./product-filter.component.css']
 })
-export class ProductFilterComponent {
-  categories$: Observable<any[]>;
-  @Input('category') category: string;
+export class ProductFilterComponent implements OnInit {
+  categories$;
+  @Input('category') category;
 
   constructor(categoryService: CategoryService) {
     this.categories$ = categoryService.getAll();
-   }
+  }
+
+  ngOnInit() {
+  }
 
 }
