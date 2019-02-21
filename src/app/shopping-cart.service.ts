@@ -25,6 +25,7 @@ export class ShoppingCartService {
     return this.db.object('/shopping-carts/' + cartId).snapshotChanges()
       .map((action: any) => {
         const items = action.payload.val().items;
+        console.log('items: ', items);
         return new ShoppingCart(items);
       });
   }
@@ -37,21 +38,23 @@ export class ShoppingCartService {
     const cartId = localStorage.getItem('cartId');
     if (cartId) { return cartId; }
 
-    const result = await this.create();
+    let result = await this.create();
     localStorage.setItem('cartId', result.key);
     return result.key;
   }
 
   async addToCart(product: Product) {
-    this.updateItemQuantity(product, 1);
+    console.log('Product (shopping-cart.service): ', product);
+    this.updateItem(product, 1);
   }
 
   removeFromCart(product: Product) {
-    this.updateItemQuantity(product, -1);
+    this.updateItem(product, -1);
   }
 
-  private async updateItemQuantity(product: Product, change: number) {
+  private async updateItem(product: Product, change: number) {
     const cartId = await this.getOrCreateCartId();
+    console.log('product.$key: ', product.key);
     const item$ = this.getItem(cartId, product.key);
 
     item$
@@ -59,7 +62,9 @@ export class ShoppingCartService {
       .take(1)
       .subscribe(item => {
         item$.update({
-          product: product,
+          title: product.title,
+          imageUrl : product.imageUrl,
+          price: product.price,
           quantity:
             (item.payload.exists() ? item.payload.val().quantity : 0) + change
         });
