@@ -11,11 +11,21 @@ import { Component, Input } from '@angular/core';
 export class ProductCardComponent {
   @Input('product') product: Product;
   @Input('show-actions') showActions = true;
-  @Input('shopping-cart') shoppingCart: ShoppingCart;
+  @Input('shopping-cart') shoppingCart: any;
 
   constructor(private cartService: ShoppingCartService) { }
 
   addToCart() {
     this.cartService.addToCart(this.product);
+  }
+
+  removeFomCart() {
+      this.cartService.removeFromCart(this.product);
+  }
+
+  getQuantity() {
+    if (!this.shoppingCart) { return 0; }
+    const item = this.shoppingCart.items[this.product.key];
+    return item ? item.quantity : 0;
   }
 }
