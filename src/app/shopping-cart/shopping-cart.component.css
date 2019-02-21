@@ -1,7 +1,15 @@
 
-.thumbnail { 
+.thumbnail {
   width: 80px;
   height: 80px;
   border-radius: 100%;
   background-size: cover;
+}
+
+.widthColQ {
+  width: 230px;
+}
+
+.widthColP {
+  width: 200px;
 }
