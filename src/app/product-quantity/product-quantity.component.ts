@@ -1,6 +1,6 @@
-import { ShoppingCartService } from './../shopping-cart.service';
-import { Product } from './../models/product';
 import { Component, Input } from '@angular/core';
+import { Product } from '../models/product';
+import { ShoppingCartService } from '../shopping-cart.service';
 import { ShoppingCart } from '../models/shopping-cart';
 
 @Component({
@@ -8,7 +8,7 @@ import { ShoppingCart } from '../models/shopping-cart';
   templateUrl: './product-quantity.component.html',
   styleUrls: ['./product-quantity.component.css']
 })
-export class ProductQuantityComponent  {
+export class ProductQuantityComponent {
   @Input('product') product: Product;
   @Input('shopping-cart') shoppingCart: ShoppingCart;
 
@@ -18,9 +18,7 @@ export class ProductQuantityComponent  {
     this.cartService.addToCart(this.product);
   }
 
-  removeFromCart() {
-    this.cartService.removeFromCart(this.product);
+  removeFomCart() {
+      this.cartService.removeFromCart(this.product);
   }
-
-
 }

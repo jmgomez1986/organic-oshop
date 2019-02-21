@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ShoppingCartService {
 
   constructor(private db: AngularFireDatabase) { }
@@ -45,7 +46,7 @@ export class ShoppingCartService {
     this.updateItemQuantity(product, 1);
   }
 
-  removeFomCart(product: Product) {
+  removeFromCart(product: Product) {
     this.updateItemQuantity(product, -1);
   }
 
