@@ -19,13 +19,11 @@ export class ShoppingCartService {
     return this.db.object('/shopping-carts/' + cartId).snapshotChanges()
       .map((action: any) => {
         const items = action.payload.val().items;
-        console.log('items: ', items);
         return new ShoppingCart(items);
       });
   }
 
   async addToCart(product: Product) {
-    console.log('Product (shopping-cart.service): ', product);
     this.updateItem(product, 1);
   }
 
@@ -59,7 +57,6 @@ export class ShoppingCartService {
 
   private async updateItem(product: Product, change: number) {
     const cartId = await this.getOrCreateCartId();
-    console.log('product.$key: ', product.key);
     const item$ = this.getItem(cartId, product.key);
 
     item$

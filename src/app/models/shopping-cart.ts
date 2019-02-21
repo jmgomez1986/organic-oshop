@@ -4,9 +4,8 @@ import { Product } from './product';
 export class ShoppingCart {
   items: ShoppingCartItem[] = [];
 
-  constructor(public itemsMap: { [productId: string]: ShoppingCartItem }) {
+  constructor(private itemsMap: { [productId: string]: ShoppingCartItem }) {
     this.itemsMap = itemsMap || {};
-    console.log('itemsMap: ', itemsMap);
     // tslint:disable-next-line:forin
     for (let productId in itemsMap) {
       let item = itemsMap[productId];
