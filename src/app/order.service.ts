@@ -9,7 +9,7 @@ export class OrderService {
   constructor(private db: AngularFireDatabase) { }
 
   storeOrder(order: any) {
-    console.log('Order to Firebase: ', order);
+    // console.log('Order to Firebase: ', order);
     return this.db.list('/orders').push(order);
   }
 }

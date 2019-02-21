@@ -4,6 +4,7 @@ import { ShoppingCart } from '../models/shopping-cart';
 import { Subscription } from 'rxjs/Subscription';
 import { OrderService } from '../order.service';
 import 'rxjs/add/operator/map';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-check-out',
@@ -14,20 +15,25 @@ export class CheckOutComponent implements OnInit, OnDestroy {
 
   shipping = {};
   cart: ShoppingCart;
-  subscription: Subscription;
+  userId: string;
+  cartSubscription: Subscription;
+  userSubscription: Subscription;
 
   constructor(
+    private authService: AuthService,
     private orderService: OrderService,
     private shoppingCartService: ShoppingCartService) { }
 
   async ngOnInit() {
     let cart$ = await this.shoppingCartService.getCart();
-    this.subscription = cart$.subscribe(cart => this.cart = cart);
+    this.cartSubscription = cart$.subscribe(cart => this.cart = cart);
+    this.authService.user$.subscribe(user => this.userId = user.uid);
   }
 
   placeOrder() {
     console.log(this.shipping);
     let order = {
+      userId: this.userId,
       datePlaced: new Date().getTime(),
       shipping: this.shipping,
       items: this.cart.items.map(i => {
@@ -44,11 +50,12 @@ export class CheckOutComponent implements OnInit, OnDestroy {
     };
 
     let result = this.orderService.storeOrder(order);
-    console.log('Resltado de push a Firebase', result);
+    // console.log('Resultado de push a Firebase', result);
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.cartSubscription.unsubscribe();
+    this.userSubscription.unsubscribe();
   }
 
 }
