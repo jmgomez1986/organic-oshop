@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ShoppingCartService } from '../shopping-cart.service';
-import { ShoppingCart } from '../models/shopping-cart';
-import { Subscription } from 'rxjs/Subscription';
-import { OrderService } from '../order.service';
-import 'rxjs/add/operator/map';
-import { AuthService } from '../auth.service';
-import { Order } from '../models/order';
 import { Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import 'rxjs/add/operator/map';
+import { Subscription } from 'rxjs/Subscription';
+import { ShoppingCart } from '../models/shopping-cart';
+import { Order } from '../models/order';
+import { ShoppingCartService } from './../services/shopping-cart.service';
+import { OrderService } from '../services/order.service';
+import { AuthService } from './../services/auth.service';
 
 @Component({
   selector: 'app-check-out',
@@ -36,7 +36,7 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   async placeOrder() {
     console.log(this.shipping);
     let order = new Order(this.userId, this.shipping, this.cart);
-    let result = await this.orderService.storeOrder(order);
+    let result = await this.orderService.placeOrder(order);
     this.router.navigate(['/order-success', result.key]);
     console.log('Resultado de push a Firebase', result);
   }

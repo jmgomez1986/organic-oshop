@@ -1,7 +1,7 @@
 import { AppUser } from './../models/app-user';
-import { AuthService } from './../auth.service';
+import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { ShoppingCartService } from './../shopping-cart.service';
+import { ShoppingCartService } from './../services/shopping-cart.service';
 import { Observable } from 'rxjs/Observable';
 import { ShoppingCart } from './../models/shopping-cart';
 
@@ -10,7 +10,7 @@ import { ShoppingCart } from './../models/shopping-cart';
   templateUrl: './bs-navbar.component.html',
   styleUrls: ['./bs-navbar.component.css']
 })
-export class BsNavbarComponent implements OnInit{
+export class BsNavbarComponent implements OnInit {
   appUser: AppUser;
   shoppingCartItemCount: number;
   cart$: Observable<ShoppingCart>;
