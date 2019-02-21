@@ -72,7 +72,7 @@ import { OrderService } from './order.service';
       { path: 'login', component: LoginComponent },
       // Rutas protegidas
       { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
-      { path: 'order-sucess', component: OrderSucessComponent, canActivate: [AuthGuard] },
+      { path: 'order-success/:id', component: OrderSucessComponent, canActivate: [AuthGuard] },
       { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
       // Rutas de administrador
       {
