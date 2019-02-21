@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { OrderService } from '../order.service';
 import 'rxjs/add/operator/map';
 import { AuthService } from '../auth.service';
+import { Order } from '../models/order';
 
 @Component({
   selector: 'app-check-out',
@@ -32,23 +33,7 @@ export class CheckOutComponent implements OnInit, OnDestroy {
 
   placeOrder() {
     console.log(this.shipping);
-    let order = {
-      userId: this.userId,
-      datePlaced: new Date().getTime(),
-      shipping: this.shipping,
-      items: this.cart.items.map(i => {
-        return {
-          product: {
-            title   : i.title,
-            imageUrl: i.imageUrl,
-            price   : i.price
-          },
-          quantity  : i.quantity,
-          totalPrice: i.totalPrice
-        };
-      })
-    };
-
+    let order = new Order(this.userId, this.shipping, this.cart);
     let result = this.orderService.storeOrder(order);
     // console.log('Resultado de push a Firebase', result);
   }
