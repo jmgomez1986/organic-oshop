@@ -7,7 +7,8 @@ import { OrderService } from 'shared/services/order.service';
 import { ProductService } from 'shared/services/product.service';
 import { ShoppingCartService } from 'shared/services/shopping-cart.service';
 import { UserService } from 'shared/services/user.service';
-import { AuthService } from './services/auth.service';
+import { AuthService } from 'shared/services/auth.service';
+import { AuthGuard } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AuthService } from './services/auth.service';
     ProductQuantityComponent,
   ],
   providers: [
+    AuthGuard,
     AuthService,
     UserService,
     ProductService,

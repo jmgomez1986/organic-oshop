@@ -1,9 +1,10 @@
-import { Observable } from 'rxjs/Observable';
-import { UserService } from 'shared/services/user.service';
-import { AuthService } from 'shared/services/auth.service';
-import { CanActivate } from '@angular/router';
-import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
+
+import { Injectable } from '@angular/core';
+import { CanActivate } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { AuthService } from 'shared/services/auth.service';
+import { UserService } from 'shared/services/user.service';
 
 @Injectable()
 export class AdminAuthGuard implements CanActivate {

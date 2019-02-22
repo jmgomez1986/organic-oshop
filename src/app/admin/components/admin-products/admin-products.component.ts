@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DataTableResource } from 'angular5-data-table';
-import { Product } from '../../shared/models/product';
-import { ProductService } from '../../shared/services/product.service';
+import { Subscription } from 'rxjs';
+import { Product } from 'shared/models/product';
+import { ProductService } from 'shared/services/product.service';
 
 
 @Component({
