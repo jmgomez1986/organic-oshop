@@ -18,4 +18,17 @@ export class OrderService {
                                           // para que se hagan las dos cosas, o son correctas las dos o fallan las dos
     return result;
   }
+
+  getOrders() {
+    return this.db.list('/orders').valueChanges();
+  }
+
+  getOrdersByUser(userId: string) {
+    // return this.db.list('/orders', query => {
+    //   return query.orderByChild('userId').equalTo(userId);
+    // });
+    // return this.db.list<any>('/orders', ref => ref.orderByChild('userId').equalTo(userId)).snapshotChanges();
+    return this.db.list('/orders',
+      ref => ref.orderByChild('userId').equalTo(userId)).valueChanges();
+  }
 }
