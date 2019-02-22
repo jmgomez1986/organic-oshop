@@ -14,7 +14,8 @@ export class OrderService {
   async placeOrder(order: any) {
     // console.log('Order to Firebase: ', order);
     let result = await this.db.list('/orders').push(order);
-    this.shoppingCartService.clearCart();
+    this.shoppingCartService.clearCart(); // Puede fallar la coneccion con Firebase, se usa Transacciones
+                                          // para que se hagan las dos cosas, o son correctas las dos o fallan las dos
     return result;
   }
 }
