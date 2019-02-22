@@ -1,9 +1,12 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "plugins": [{
-    "name": "typescript-plugin-move-declaration"
-    }],
+    "baseUrl": "./src",
+    "paths": {
+      "shared/*": [
+        "app/shared/*"
+      ],
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -20,11 +23,5 @@
       "es2018",
       "dom"
     ],
-    "baseUrl": "./scr",
-    "paths": {
-      "shared/*": [
-        "app/shared/*"
-      ],
-    }
   }
 }
