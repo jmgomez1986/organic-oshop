@@ -25,9 +25,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     ShippingFormComponent,
   ],
   imports: [
-    CommonModule,
     SharedModule,
-    FormsModule,
     RouterModule.forChild([
       { path: 'products', component: ProductsComponent },
       { path: 'shopping-cart', component: ShoppingCartComponent },

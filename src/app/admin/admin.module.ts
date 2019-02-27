@@ -17,10 +17,7 @@ import { AdminAuthGuard } from './services/admin-auth-guard.service';
     AdminOrdersComponent,
   ],
   imports: [
-    CommonModule,
-    FormsModule,
     SharedModule,
-    DataTableModule,
     RouterModule.forChild([
       // Rutas de administrador
       {
